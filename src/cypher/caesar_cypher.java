@@ -1,7 +1,7 @@
 package cypher;
 import java.util.Scanner; // Import Scanner
 
-public class cypher {
+public class caesar_cypher {
 	static char[] usCharArray = {
 								  'a', // 0
 								  'b', // 1

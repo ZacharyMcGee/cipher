@@ -9,7 +9,7 @@ public class otp {
 		String message = "Hello World";
 		String message2 = "the program";
 		String key = "supersecret";
-		String testWord = "and";
+		String testWord = "sowhat";
 		String messageHex = stringToHex(message);
 		String message2Hex = stringToHex(message2);
 		String testwordHex = stringToHex(testWord);
@@ -18,8 +18,14 @@ public class otp {
 		//String xorMessage1 = xorHex(messageHex, keyHex);
 		//String xorMessage2 = xorHex(message2Hex, keyHex);
 		
-		String xorMessage1 = "16840c56b2ec1560c206c101d89adbd808ce90a2fce4842f335a91297d";
-		String xorMessage2 = "16840005fffd0e61801ad6039a81dfc608ce90a8fce48460604b912870";
+		String messageee1 = stringToHex("kcilwhzvsba");
+		String messageee2 = stringToHex("lvuwegrwwla");
+		String xorMessage1 = xorHex(messageee1, keyHex);
+		String xorMessage2 = xorHex(messageee2, keyHex);
+
+		
+		//String xorMessage1 = "16840c56b2ec1560c206c101d89adbd808ce90a2fce4842f335a91297d";
+		//String xorMessage2 = "16840005fffd0e61801ad6039a81dfc608ce90a8fce48460604b912870";
 		
 		System.out.println(xorMessage1);
 		System.out.println(xorMessage2);

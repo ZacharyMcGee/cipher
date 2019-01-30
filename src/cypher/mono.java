@@ -2,7 +2,7 @@ package cypher;
 import java.util.Scanner;
 
 public class mono {
-	static char[] usCharArray = {
+	static char[] usCharArray = {      // The English Alphabet
 								  'a', // 0
 								  'b', // 1
 								  'c', // 2
@@ -31,8 +31,8 @@ public class mono {
 								  'z'  // 25
 						  		};
 	
-	static char[] dataFreq = {
-								'E',
+	static char[] dataFreq = {       // The Frequency Dataset dataFreq[0] being the most freq
+								'E', // E is the most frequently used letter
 								'T',
 								'A',
 								'I',
@@ -57,7 +57,7 @@ public class mono {
 								'Z',
 								'X',
 								'J',
-								'Q'
+								'Q' // The least frequently used
 								};
 	
 	public static void main(String args[]) {
@@ -65,28 +65,11 @@ public class mono {
 		System.out.println("Enter");
 		String input = scan.nextLine();
 		
-		System.out.println(sortByFreq(input));
-		
+		System.out.println(swapLetters(input));	// Print results to console
 	}
 	
-	public static int[] getLetterFrequency(String s) {
-		char[] charArray = s.toCharArray();
-		int[] freqCount = new int[26];
-		for(int i = 0; i < s.length(); i++) {
-			boolean matched = false;
-			int j = 0;
-			while(!matched) {
-				if(charArray[i] == usCharArray[j]) {
-					freqCount[j]++;
-					matched = true;
-				}
-				j++;
-			}
-		}
-		return freqCount;
-	}
-	
-	public static String sortByFreq(String s) {
+	// Swap letters by using the dataFreq dataset and freq of current input
+	public static String swapLetters(String s) {
 		char[] charArray = s.toCharArray();
 		int[] freqCount = getLetterFrequency(s);
 		freqCount = bubbleSort(freqCount);
@@ -104,15 +87,32 @@ public class mono {
 		return String.valueOf(charArray);
 	}
 	
+	// Find the letter frequency in the input string
+	public static int[] getLetterFrequency(String s) {
+		char[] charArray = s.toCharArray();
+		int[] freqCount = new int[26];
+		for(int i = 0; i < s.length(); i++) {
+			boolean matched = false;
+			int j = 0;
+			while(!matched) {
+				if(charArray[i] == usCharArray[j]) {
+					freqCount[j]++;
+					matched = true;
+				}
+				j++;
+			}
+		}
+		return freqCount;
+	}
 	
+	// Sort the frequency of the letters
     public static int[] bubbleSort(int arr[]) 
     { 
         int n = arr.length; 
-        for (int i = 0; i < n-1; i++) 
-            for (int j = 0; j < n-i-1; j++) 
-                if (arr[j] < arr[j+1]) 
+        for (int i = 0; i < n - 1; i++) 
+            for (int j = 0; j < n - i - 1; j++) 
+                if (arr[j] < arr[j + 1]) 
                 { 
-                    // swap arr[j+1] and arr[i] 
                     int temp = arr[j]; 
                     arr[j] = arr[j+1]; 
                     arr[j+1] = temp; 
@@ -123,22 +123,4 @@ public class mono {
                 } 
         return arr;
     } 
-	
-	public static void findTrigraphs(String s) {
-		char[] charArray = s.toCharArray();
-
-	}
-	
-	public static void findDoubles(String s) {
-		char[] charArray = s.toCharArray();
-		char[] doubleArray;
-		char tempChar;
-		
-		for(int i = 0; i < charArray.length - 1; i++) {
-			if(charArray[i] == charArray[i + 1]) {
-				tempChar = charArray[i];
-				System.out.println(tempChar);
-			}
-		}
-	}
 }
