@@ -16,10 +16,8 @@ public class feistel_block {
 		s = toBinary(s);
 		char[] charArray = s.toCharArray();
 		for(int i = 0; i < (s.length() / 32); i++) {
-			System.out.println(s);
-			System.out.print(s.substring(i * 32, (i+1) * 32));
+			split(s.substring(i * 32, (i+1) * 32));
 		}
-
 	}
 	
 	public static String toBinary(String s) {
@@ -39,8 +37,15 @@ public class feistel_block {
 	}
 	
 	public static String split(String s) {
-	    int[] left = new int[]{1,2,3}; 
-	    int[] right = new int[]{4,5,6}; // reset
+		String leftStr = s.substring(0, s.length() / 2);
+		String rightStr = s.substring(s.length() / 2, s.length());
+		
+	    int[] left = new int[leftStr.length()];
+	    int[] right = new int[rightStr.length()];
+	    
+	    for (int i = 0; i < leftStr.length(); i++) {
+
+	    }
 	    System.out.println ("=====RIGHT=====");
 	    for(int r = 1; r <= rounds; r++) {
 	        for(int i = 0; i < right.length; i++){
