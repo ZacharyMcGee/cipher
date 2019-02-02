@@ -1,27 +1,12 @@
 package cypher;
-import java.util.Scanner;
+
 import java.math.BigInteger;
 
 public class otp {
 	public static void main(String args[]) {
-		Scanner scan = new Scanner(System.in);
-		
-		String message = "Hello World";
-		String message2 = "the program";
-		String key = "supersecret";
-		String testWord = "please";
-		String messageHex = stringToHex(message);
-		String message2Hex = stringToHex(message2);
-		String testwordHex = stringToHex(testWord);
-		String keyHex = stringToHex(key);
+		String crib = "this problem was was too easy";
+		String cribHex = stringToHex(crib);
 
-		//String xorMessage1 = xorHex(messageHex, keyHex);
-		//String xorMessage2 = xorHex(message2Hex, keyHex);
-		
-		//String messageee1 = stringToHex("kcilwhzvsba");
-		//String messageee2 = stringToHex("uozckikhdet");
-		//String hexMessage1 = xorHex(messageee1, keyHex);
-		//String hexMessage2 = xorHex(messageee2, keyHex);
 
 		
 		String xorMessage1 = "16840c56b2ec1560c206c101d89adbd808ce90a2fce4842f335a91297d";
@@ -32,37 +17,53 @@ public class otp {
 		String xorMessage6 = "0f954551fbf1022fc11e841f91989ac349cad1b9b9f58560744d953b70";
 		
 		
-		String[] xorBoth = new String[16];
-		xorBoth[0] = "0" + xorHex(xorMessage1, xorMessage2);
-		xorBoth[1] = "0" + xorHex(xorMessage1, xorMessage3);
-		xorBoth[2] = "0" + xorHex(xorMessage1, xorMessage4);
+		String[] xorBoth = new String[36];
+		xorBoth[0] = "00000" + xorHex(xorMessage1, xorMessage2);
+		xorBoth[1] = xorHex(xorMessage1, xorMessage3);
+		xorBoth[2] = "190D0C0700191C4F0F1545024611081045570E1700120A0D0016080B0D";
 		xorBoth[3] = "0" + xorHex(xorMessage1, xorMessage5);
-		xorBoth[4] = "0" + xorHex(xorMessage1, xorMessage6);
-		xorBoth[5] = "0" + xorHex(xorMessage2, xorMessage3);
-		xorBoth[6] = "0" + xorHex(xorMessage2, xorMessage4);
+		xorBoth[4] = xorHex(xorMessage1, xorMessage6);
+		xorBoth[5] = xorHex(xorMessage2, xorMessage3);
+		xorBoth[6] = xorHex(xorMessage2, xorMessage4);
 		xorBoth[7] = "0" + xorHex(xorMessage2, xorMessage5);
-		xorBoth[8] = "0" + xorHex(xorMessage2, xorMessage6);
-		xorBoth[9] = "0" + xorHex(xorMessage3, xorMessage4);
-		xorBoth[10] = "0" + xorHex(xorMessage3, xorMessage5);
+		xorBoth[8] = xorHex(xorMessage2, xorMessage6);
+		xorBoth[9] = xorHex(xorMessage3, xorMessage4);
+		xorBoth[10] = xorHex(xorMessage3, xorMessage5);
 		xorBoth[11] = "0" + xorHex(xorMessage3, xorMessage6);
-	    xorBoth[12] = "0" + xorHex(xorMessage4, xorMessage5);
-		xorBoth[13] = "0" + xorHex(xorMessage4, xorMessage6);
-		xorBoth[14] = "0" + xorHex(xorMessage5, xorMessage6);
+	    xorBoth[12] = xorHex(xorMessage4, xorMessage5);
+		xorBoth[13] = xorHex(xorMessage4, xorMessage6);
+		xorBoth[14] = xorHex(xorMessage5, xorMessage6);
+		xorBoth[15] = "00000" + xorHex(xorMessage2, xorMessage1);
+		xorBoth[16] = xorHex(xorMessage3, xorMessage1);
+		xorBoth[17] = xorHex(xorMessage4, xorMessage1);
+		xorBoth[18] = "0" + xorHex(xorMessage5, xorMessage1);
+		xorBoth[19] = xorHex(xorMessage6, xorMessage1);
+		xorBoth[20] = xorHex(xorMessage3, xorMessage2);
+		xorBoth[21] = xorHex(xorMessage4, xorMessage2);
+		xorBoth[22] = "0" + xorHex(xorMessage5, xorMessage2);
+		xorBoth[23] = xorHex(xorMessage6, xorMessage2);
+		xorBoth[24] = xorHex(xorMessage4, xorMessage3);
+		xorBoth[25] = xorHex(xorMessage5, xorMessage3);
+		xorBoth[26] = "0" + xorHex(xorMessage6, xorMessage3);
+	    xorBoth[27] = xorHex(xorMessage5, xorMessage4);
+		xorBoth[28] = xorHex(xorMessage6, xorMessage4);
+		xorBoth[29] = xorHex(xorMessage6, xorMessage5);
 
-		for(int j = 0; j < 14; j++) {
+		for(int j = 0; j < 15; j++) {
 			System.out.println("ATTEMPT #" + j + "@@@@@@@@@@@");
-			for(int i = 0; i < xorBoth[j].length() - 16; i++) {
-				String xorTrim = xorBoth[j].substring(i, i + testwordHex.length());
-				String result = xorHex(xorTrim, testwordHex);
-				for(int k = 0; k < i; k++) {
-					System.out.print(".");
-				}
+			System.out.println(xorBoth[j] + " " + xorBoth[j].length());
+			for(int i = 0; i < 10; i++) {
+				//String xorTrim = xorBoth[j].substring(i, i + testwordHex.length());
+				String result = xorHex(xorBoth[j], cribHex);
+				//for(int k = 0; k < i; k++) {
+				//	System.out.print(".");
+				//}
 				System.out.print(hexToAscii(result));
-				for(int k = 0; k < xorBoth[j].length() - i; k++) {
-					System.out.print(".");
-				}
+				//for(int k = 0; k < xorBoth[j].length() - i; k++) {
+				//	System.out.print(".");
+				//}
 				System.out.println();
-		}
+			}
 		}
 		
 	}
