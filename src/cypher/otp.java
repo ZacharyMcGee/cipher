@@ -30,7 +30,7 @@ public class otp {
 		xorBoth[9] = xorHex(xorMessage3, xorMessage4);
 		xorBoth[10] = xorHex(xorMessage3, xorMessage5);
 		xorBoth[11] = "0" + xorHex(xorMessage3, xorMessage6);
-	    xorBoth[12] = xorHex(xorMessage4, xorMessage5);
+	    	xorBoth[12] = xorHex(xorMessage4, xorMessage5);
 		xorBoth[13] = xorHex(xorMessage4, xorMessage6);
 		xorBoth[14] = xorHex(xorMessage5, xorMessage6);
 		xorBoth[15] = "00000" + xorHex(xorMessage2, xorMessage1);
@@ -45,7 +45,7 @@ public class otp {
 		xorBoth[24] = xorHex(xorMessage4, xorMessage3);
 		xorBoth[25] = xorHex(xorMessage5, xorMessage3);
 		xorBoth[26] = "0" + xorHex(xorMessage6, xorMessage3);
-	    xorBoth[27] = xorHex(xorMessage5, xorMessage4);
+	    	xorBoth[27] = xorHex(xorMessage5, xorMessage4);
 		xorBoth[28] = xorHex(xorMessage6, xorMessage4);
 		xorBoth[29] = xorHex(xorMessage6, xorMessage5);
 
